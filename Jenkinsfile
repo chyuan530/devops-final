@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git([url: 'https://github.com/chyuan530/devops-proj4.git', branch: 'main', credentialsId: ''])
+        git([url: 'https://github.com/chyuan530/devops-final.git', branch: 'main', credentialsId: ''])
       }
     }
     stage('Compile') {
@@ -18,9 +18,10 @@ pipeline {
     }
     stage('Test') {
       steps{
-        withMaven {
-          sh 'mvn test'
-        }
+        sh 'echo test'
+        //withMaven {
+        //  sh 'mvn test'
+        //}
       }
     }
     stage('Package') {
