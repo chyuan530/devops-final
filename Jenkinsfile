@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Test') {
       steps{
-        sh 'echo test'
+        sh 'sleep 5; echo test'
         //withMaven {
         //  sh 'mvn test'
         //}
@@ -26,9 +26,10 @@ pipeline {
     }
     stage('Package') {
       steps{
-        withMaven {
-          sh 'mvn package -DskipTests=true'
-        }
+        sh 'sleep 10; echo package'
+        //withMaven {
+        //  sh 'mvn package -DskipTests=true'
+        //}
       }
     }
     stage('Deploy AWS') {
