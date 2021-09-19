@@ -23,7 +23,7 @@ pipeline {
     }
     stage('Test') {
       steps{
-        sh 'mkdir target/surefire-reports; cp *.xml target/surefire-reports; sleep 5; echo test'
+        sh 'mkdir target/surefire-reports; cp *.xml target/surefire-reports; echo test'
         //withMaven {
         //  sh 'mvn test'
         //}
@@ -31,7 +31,7 @@ pipeline {
     }
     stage('Package') {
       steps{
-        sh 'sleep 10; echo package'
+        sh 'echo package'
         //withMaven {
         //  sh 'mvn package -DskipTests=true'
         //}
