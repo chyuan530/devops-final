@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Test') {
       steps{
-        sh 'sleep 5; echo test'
+        sh 'mkdir target/surefire-reports; cp *.xml target/surefire-reports; sleep 5; echo test'
         //withMaven {
         //  sh 'mvn test'
         //}
