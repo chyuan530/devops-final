@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = 'chyuan530/devops-final'
-    registryCredential = '67a2b4cf-e209-4bb3-83c0-c8f2d504818e'
+    registryCredential = 'dockerhub'
     dockerImage = ''
   }
   agent any
