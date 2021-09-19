@@ -1,4 +1,9 @@
 pipeline {
+  environment {
+    registry = 'chyuan530/devops-final'
+    registryCredential = '67a2b4cf-e209-4bb3-83c0-c8f2d504818e'
+    dockerImage = ''
+  }
   agent any
   tools {
         maven 'maven_381'
@@ -30,6 +35,27 @@ pipeline {
         //withMaven {
         //  sh 'mvn package -DskipTests=true'
         //}
+      }
+    }
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry + ':$BUILD_NUMBER'
+        }
+      }
+    }
+    stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry('', registryCredential ) {
+             dockerImage.push()
+          }
+        }
+      }
+    }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
     stage('Deploy AWS') {
