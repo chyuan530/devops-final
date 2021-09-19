@@ -40,17 +40,17 @@ sudo docker run --name jenkins-blueocean --rm --detach \
 #  --volume jenkins_data:/var/jenkins_home \  
 
 # access init jenkins password on docker container
-sudo docker container exec -it jenkins-blueocean bash
+#sudo docker container exec -it jenkins-blueocean bash
 
 # install git
-sudo apt-get update
-sudo apt-get install git
+#sudo apt-get update
+#sudo apt-get install git
 
 # install ansible
-sudo apt update
-sudo apt install software-properties-common
-sudo add-apt-repository --yes --update ppa:ansible/ansible
-sudo apt install ansible
+#sudo apt update
+#sudo apt install software-properties-common
+#sudo add-apt-repository --yes --update ppa:ansible/ansible
+#sudo apt install ansible
 
 # configure jenkins via web ui, automate it...
 # install docker, ansible, pipeline maven plugin

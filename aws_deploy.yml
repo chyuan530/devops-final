@@ -2,17 +2,9 @@
 - name: AWS deploy
   hosts: aws
   tasks:
-    - name: install java
-      become: true
-      become_user: root
-      apt: name=openjdk-11-jre-headless update_cache=no state=latest
-    - name: copy jar file
-      copy:
-        src: /var/lib/jenkins/workspace/devops-proj4/target/devops-0.0.1-SNAPSHOT.jar
-        dest: /home/ubuntu/webapp/
-        remote_src: no
-    - name: stop running web service
-      shell: "pkill -9 java"
-      ignore_errors: yes
-    - name: start web service
-      shell: nohup java -jar webapp/devops-0.0.1-SNAPSHOT.jar &
+    - name: application container
+      docker:
+        name: my-webapp
+        image: chyuan530/devops-final
+        state: reloaded
+        pull: always
