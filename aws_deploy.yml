@@ -3,8 +3,9 @@
   hosts: aws
   tasks:
     - name: application container
-      docker:
+      docker_container:
         name: my-webapp
         image: chyuan530/devops-final
-        state: reloaded
-        pull: always
+        state: started
+        restart: yes
+        pull: yes
